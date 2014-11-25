@@ -11,7 +11,7 @@ drop' n (x:xs)
 
 -- b)
 -- dropWhile' p xs : the longest suffix of list 'xs' such that the head does not
---                  satisfy predicate 'p'
+--                   satisfy predicate 'p'
 dropWhile' _ []     = []
 dropWhile' p (x:xs)
     | p x       = dropWhile' p xs
@@ -27,9 +27,9 @@ fibonacci = 0 : 1 : zipWith (+) fibonacci (tail fibonacci)
 -- Question 2
 -- a) and b)
 -- iterate' f x : the list obtained by applying function 'f' to item 'x'
---               recursively: [x, f x, f (f x), f (f (f x)), ...]
+--                recursively: [x, f x, f (f x), f (f (f x)), ...]
 iterate' :: (a -> a) -> a -> [a]
-iterate' f x = x : iterate f (f x)
+iterate' f x = x : iterate' f (f x)
 
 -- c)
 -- powers n : the infinite list of positive integer powers of number 'n'
