@@ -27,7 +27,7 @@ occurences xs = [ (x, n) | x <- remdups xs, let n = count x xs ]
 -- iterate' f x : the list obtained by applying function 'f' to item 'x'
 --               recursively: [x, f x, f (f x), f (f (f x)), ...]
 iterate' :: (a -> a) -> a -> [a]
-iterate' f x = x : iterate f (f x)
+iterate' f x = x : iterate' f (f x)
 
 -- c)
 -- powers n : the infinite list of positive integer powers of number 'n'
