@@ -25,7 +25,9 @@ atLeast :: Int -> [a] -> Bool
 atLeast n []
     | n <= 0     = True
     | otherwise  = False
-atLeast n (x:xs) = atLeast (n - 1) xs
+atLeast n (x:xs)
+    | n <= 0     = True
+    | otherwise  = atLeast (n - 1) xs
 
 -- Question 3
 -- a)
