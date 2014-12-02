@@ -71,6 +71,4 @@ reps = iterate (\(h:t) -> h + 1 : map (+1) (h:t)) [1]
 -- pascal : the infinite list that has, as its nth item, the nth row of
 -- Pascal's triangle
 pascal :: Integral a => [[a]]
-pascal = iterate (\ns -> 1 : pascal' ns) [1]
-    where pascal' [1]        = [1]
-          pascal' (n1:n2:ns) = n1 + n2 : pascal' (n2:ns)
+pascal = iterate (\l@(x:xs) -> 1 : zipWith (+) l xs ++ [1]) [1]
