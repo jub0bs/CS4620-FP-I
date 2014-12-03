@@ -65,7 +65,7 @@ iterate' f x = x : iterate' f (f x)
 -- reps : the infinite list that has, as its nth item, a list composed of n
 --        copies of integer n
 reps :: Integral a => [[a]]
-reps = iterate (\(h:t) -> h + 1 : map (+1) (h:t)) [1]
+reps = iterate (\ns@(h:t) -> map (+1) (h:ns)) [1]
 
 -- c)
 -- pascal : the infinite list that has, as its nth item, the nth row of
