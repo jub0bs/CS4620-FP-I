@@ -65,10 +65,10 @@ iterate' f x = x : iterate' f (f x)
 -- reps : the infinite list that has, as its nth item, a list composed of n
 --        copies of integer n
 reps :: Integral a => [[a]]
-reps = iterate (\ns@(h:t) -> map (+1) (h:ns)) [1]
+reps = iterate (\l@(h:_) -> map (+1) (h:l)) [1]
 
 -- c)
 -- pascal : the infinite list that has, as its nth item, the nth row of
 -- Pascal's triangle
 pascal :: Integral a => [[a]]
-pascal = iterate (\l@(x:xs) -> 1 : zipWith (+) l xs ++ [1]) [1]
+pascal = iterate (\l@(_:xs) -> 1 : zipWith (+) l xs ++ [1]) [1]
