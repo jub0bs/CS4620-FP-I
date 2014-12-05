@@ -10,11 +10,8 @@ count x = foldr (\y -> \acc -> (if y == x then 1 else 0) + acc) 0
 -- remdups xs : a copy of list 'xs' from which duplicate items have been
 --              removed
 remdups :: Eq a => [a] -> [a]
-remdups xs = remdups' xs []
-    where remdups' []     _ = []
-          remdups' (x:xs) l
-              | x `elem` l  = remdups' xs l
-              | otherwise   = x : remdups' xs (x:l)
+remdups [] = []
+remdups (x1:xs) = x1 : remdups (filter (\x -> x /= x1) xs)
 
 -- c)
 -- occurences xs : the list of tuples of distinct items and their number of
