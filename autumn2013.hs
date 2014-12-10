@@ -22,18 +22,16 @@ factorials = 1 : zipWith (*) factorials [2 .. ]
 -- b)
 -- atLeast n xs : are there at least 'n' items in the list 'xs'?
 atLeast :: Int -> [a] -> Bool
-atLeast n []
+atLeast n l
     | n <= 0     = True
-    | otherwise  = False
-atLeast n (x:xs)
-    | n <= 0     = True
-    | otherwise  = atLeast (n - 1) xs
+    | otherwise  = case l of []     -> False
+                             (x:xs) -> atLeast (n - 1) xs
 
 -- Question 3
 -- a)
 -- from n : the increasing list of all integers from 'n' onwards
 from :: Integer -> [Integer]
-from n = iterate (+1) n
+from n = [n .. ]
 
 -- b)
 -- unite xs ys : the list formed by alternately selecting items from infinite
