@@ -42,9 +42,8 @@ powers n = iterate (\powerSoFar -> powerSoFar * n) n
 --                    function 'f'; the length of the resulting list is the
 --                    smaller of the lengths of lists 'xs' and 'ys'.
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith' _ _      []     = []
-zipWith' _ []     _      = []
 zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+zipWith' _ _      _      = []
 
 -- b)
 -- mystery ns = zipWith (+) ns ( 0 : mystery ns )
