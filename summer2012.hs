@@ -4,20 +4,18 @@
 -- a)
 -- allEqual xs : is every item in list 'xs' equal to every other such item?
 allEqual :: Eq a => [a] -> Bool
-allEqual []         = True
-allEqual [x]        = True
 allEqual (x1:x2:xs) = x1 == x2 && allEqual (x2:xs)
+allEqual _          = True
 
 -- b)
 -- allDifferent xs : is every item in the list 'xs' different from every
 --                   other such item?
 allDifferent :: Eq a => [a] -> Bool
-allDifferent []  = True
-allDifferent [x] = True
-allDifferent l   = allDifferent' l []
+allDifferent l@(y:ys) = allDifferent' l []
     where allDifferent' []     _  = True
           allDifferent' (x:xs) l' = not (x `elem` l')
                                     && allDifferent' xs (x:l')
+allDifferent _        = True
 
 -- c)
 -- countMax xs : the number of times that its maximum item occurs in the
@@ -57,9 +55,8 @@ compose' = foldr (.) id
 --                    function 'f'; the length of the resulting list is the
 --                    smaller of the lengths of lists 'xs' and 'ys'.
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith' _ _      []     = []
-zipWith' _ []     _      = []
 zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+zipWith' _ _      _      = []
 
 -- b)
 mystery = 1 : zipWith (*) mystery [1 .. ]
