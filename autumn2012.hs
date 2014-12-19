@@ -4,7 +4,7 @@
 -- a)
 -- drop' n xs : the list formed by dropping the first 'n' items in list 'xs'
 drop' :: Int -> [a] -> [a]
-drop' _ []     = []
+drop' _ []      = []
 drop' n (x:xs)
     | n <= 0    = (x:xs)
     | otherwise = drop' (n - 1) xs
@@ -14,8 +14,8 @@ drop' n (x:xs)
 --                   satisfy predicate 'p'
 dropWhile' _ []     = []
 dropWhile' p (x:xs)
-    | p x       = dropWhile' p xs
-    | otherwise = x:xs
+    | p x           = dropWhile' p xs
+    | otherwise     = x:xs
 
 -- c)
 -- fibonacci : the infinite list of Fibonacci Numbers [0,1,1,2,3,5,8,...],
