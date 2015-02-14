@@ -1,7 +1,7 @@
 -- Question 1
 -- a)
 -- [ ⟨expr⟩ | ⟨var⟩ <- ⟨list⟩, ⟨condition⟩ ]
--- ... is equivalent to...
+-- ... is equivalent to ...
 -- map (\ ⟨var⟩ -> ⟨expr⟩) $ filter (\ ⟨var⟩ -> ⟨condition⟩) ⟨list⟩
 
 -- b)
@@ -11,7 +11,7 @@
 -- that types are determined at run time rather than at compile time.
 
 -- Static vs. dynamic typing
--- Static:                     | Dynamic :
+-- Static:                     | Dynamic:
 --   * greater robustness      |   * fast prototyping
 --   * smaller executables     |   * ease of implementation
 --  (* execution speed)        |
@@ -40,8 +40,9 @@ powerLists = map powersOf $ from 1
 
 -- c)
 powerLists' :: [[Int]]
-powerLists' = [ [ n^p | p <- [ 0 .. ] ] | n <- [ 1 .. ] ]
+powerLists' = [ [ n ^ p | p <- [ 0 .. ] ] | n <- [ 1 .. ] ]
 
 -- d)
 facTuples :: [(Int,Int)]
-facTuples = iterate ( \(n,factn) -> (n + 1, (n + 1) * factn) ) (1,1)
+facTuples = iterate ( \(n,factn) -> let n' = n + 1
+                                    in (n', n' * factn) ) (1,1)
